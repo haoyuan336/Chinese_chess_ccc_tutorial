@@ -69,8 +69,40 @@
       "x": 8,
       "y": 0
     }
+  },
+  "bing_1": {
+    "chess_name": "bing",
+    "pos": {
+      "x": 0,
+      "y": 3
+    }
+  },
+  "bing_2": {
+    "chess_name": "bing",
+    "pos": {
+      "x": 2,
+      "y": 3
+    }
+  },
+  "bing_3": {
+    "chess_name": "bing",
+    "pos": {
+      "x": 4,
+      "y": 3
+    }
+  },
+  "bing_4": {
+    "chess_name": "bing",
+    "pos": {
+      "x": 6,
+      "y": 3
+    }
+  },
+  "bing_5": {
+    "chess_name": "bing",
+    "pos": {
+      "x": 8,
+      "y": 3
+    }
   }
-
-
-
 }

@@ -49,6 +49,9 @@ cc.Class({
                 y: 50 / 250
             };
             this.node.getComponent(cc.Sprite).spriteFrame.setRect(cc.rect( 50 * indexX,50 * indexY,50,50));
+            if (indexY === 1){
+                this.node.rotation = 180;
+            }
         });
 
     }

@@ -16,7 +16,8 @@ cc.Class({
         this.node.scale = {
             x: 50 / 350,
             y: 50 / 250
-        }
+        };
+        this.node.opacity = 0;
     },
 
 });
