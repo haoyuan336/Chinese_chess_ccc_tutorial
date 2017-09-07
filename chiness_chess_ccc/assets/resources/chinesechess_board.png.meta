@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "52dd6400-e0a5-4988-a077-2f6eab405847",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "chinesechess_board": {
+      "ver": "1.0.3",
+      "uuid": "ece46095-0ca7-4aee-827c-b79f01ab1af8",
+      "rawTextureUuid": "52dd6400-e0a5-4988-a077-2f6eab405847",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 459,
+      "height": 510,
+      "rawWidth": 459,
+      "rawHeight": 510,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

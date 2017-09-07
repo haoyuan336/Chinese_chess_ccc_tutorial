@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "b34c106d-abfb-4479-ae9d-c7408345f0ca",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "chinesechess_corner": {
+      "ver": "1.0.3",
+      "uuid": "df1c1e34-e339-4f65-8d55-7fb932e17ddc",
+      "rawTextureUuid": "b34c106d-abfb-4479-ae9d-c7408345f0ca",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 1,
+      "trimY": 0,
+      "width": 348,
+      "height": 250,
+      "rawWidth": 350,
+      "rawHeight": 250,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
