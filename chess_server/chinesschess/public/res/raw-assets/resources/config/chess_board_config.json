@@ -1,0 +1,108 @@
+{
+
+  "shuai": {
+    "chess_name": "shuai",
+    "pos": {
+      "x": 4,
+      "y": 0
+    }
+  },
+  "shi_left": {
+    "chess_name": "shi",
+    "pos": {
+      "x": 3,
+      "y": 0
+    }
+  },
+  "xiang_left": {
+    "chess_name": "xiang",
+    "pos": {
+      "x": 2,
+      "y": 0
+    }
+  },
+  "ma_left": {
+    "chess_name": "ma",
+    "pos": {
+      "x": 1,
+      "y": 0
+    }
+  },
+  "che_left": {
+    "chess_name": "che",
+    "pos": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "pao_left":{
+    "chess_name": "pao",
+    "pos": {
+      "x": 1,
+      "y": 2
+    }
+  },
+  "shi_right": {
+    "chess_name": "shi",
+    "pos": {
+      "x": 5,
+      "y": 0
+    }
+  },
+  "xiang_right": {
+    "chess_name": "xiang",
+    "pos": {
+      "x": 6,
+      "y": 0
+    }
+  },
+  "ma_right": {
+    "chess_name": "ma",
+    "pos": {
+      "x": 7,
+      "y": 0
+    }
+  },
+  "che_right": {
+    "chess_name": "che",
+    "pos": {
+      "x": 8,
+      "y": 0
+    }
+  },
+  "bing_1": {
+    "chess_name": "bing",
+    "pos": {
+      "x": 0,
+      "y": 3
+    }
+  },
+  "bing_2": {
+    "chess_name": "bing",
+    "pos": {
+      "x": 2,
+      "y": 3
+    }
+  },
+  "bing_3": {
+    "chess_name": "bing",
+    "pos": {
+      "x": 4,
+      "y": 3
+    }
+  },
+  "bing_4": {
+    "chess_name": "bing",
+    "pos": {
+      "x": 6,
+      "y": 3
+    }
+  },
+  "bing_5": {
+    "chess_name": "bing",
+    "pos": {
+      "x": 8,
+      "y": 3
+    }
+  }
+}
