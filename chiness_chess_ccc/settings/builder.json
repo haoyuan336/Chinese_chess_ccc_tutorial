@@ -7,10 +7,15 @@
     "anysdk"
   ],
   "inlineSpriteFrames": true,
+<<<<<<< HEAD
   "inlineSpriteFrames_native": true,
   "mergeStartScene": false,
   "oauthLoginServer": "",
   "optimizeHotUpdate": false,
+=======
+  "mergeStartScene": false,
+  "oauthLoginServer": "",
+>>>>>>> 6ca997d6622e1661a8e25fbf6a16d6f37d29d3f4
   "orientation": {
     "landscapeLeft": true,
     "landscapeRight": true,
@@ -21,6 +26,10 @@
   "privateKey": "",
   "renderMode": "0",
   "startScene": "c22d3130-c427-4d8e-bfe6-72252015c9d3",
+<<<<<<< HEAD
   "title": "chiness_chess",
+=======
+  "title": "hello_world",
+>>>>>>> 6ca997d6622e1661a8e25fbf6a16d6f37d29d3f4
   "webOrientation": "auto"
 }
