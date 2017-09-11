@@ -18,6 +18,8 @@ cc.Class({
     },
     initWithData: function (data) {
 
+        this.x = data.index_pos.x;
+        this.y = data.index_pos.y;
 
         console.log('data = ' + JSON.stringify(data));
         cc.loader.loadRes("./chinesechess_corner", cc.SpriteFrame, (err, spriteFrame)=>{
@@ -27,6 +29,7 @@ cc.Class({
             console.log("chess color liet = " + JSON.stringify(chessColorList));
             var chessName = data.chess_name;
             var chessColor = data.chess_color;
+            this.chessName = chessName;
             var indexX = 0;
             for (let i = 0 ; i < chessNameList.length ; i ++){
                 if (chessName === chessNameList[i]){
@@ -54,6 +57,9 @@ cc.Class({
             }
         });
 
+    },
+    getChessName: function () {
+        return this.chessName;
     }
 
     // called every frame, uncomment this function to activate update callback

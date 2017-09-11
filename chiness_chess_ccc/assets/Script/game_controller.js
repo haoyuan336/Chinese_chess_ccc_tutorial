@@ -1,4 +1,5 @@
 import defines from './defines'
+import global from './global'
 cc.Class({
     extends: cc.Component,
 
@@ -16,6 +17,7 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
 
+        this.chessNodeList = [];
         this.controlPointList = [];
         for (let i = 0 ; i < 10 ; i ++){
             for (let j = 0 ; j < 9 ; j ++){
@@ -26,7 +28,8 @@ cc.Class({
                 controlNode.position = {
                     x: j * 50 + (9 - 1) * - 0.5 * 50,
                     y: i * 50 + (10 - 1) * - 0.5 * 50
-                }
+                };
+                controlNode.getComponent("control_pos").initWithPos(j, i);
                 this.controlPointList.push(controlNode);
             }
         }
@@ -35,17 +38,24 @@ cc.Class({
 
 
 
-        // for (var j = 0 ; j < defines.chessColor.length ; j ++){
-        //     for (var i = 0 ; i < defines.chessList.length ; i ++){
-        //         let chess = cc.instantiate(this.chess_prefab);
-        //         chess.parent = this.node;
-        //         chess.getComponent("chess").initWithData({"chess_name": defines.chessList[i],"chess_color": defines.chessColor[j]});
-        //         chess.position = {
-        //             x: 50 * i,
-        //             y: 50 * j
-        //         }
-        //     }
-        // }
+
+        global.event.on("touch_pos", (data)=>{
+            if (!!this.chessNode){
+                // this.chessNode
+            }
+
+
+            for (let i = 0 ; i < this.chessNodeList.length ; i ++){
+                let chess =  this.chessNodeList[i];
+                let chessJS = chess.getComponent("chess");
+                if (chessJS.x === data.x && chessJS.y === data.y){
+                    var name = chess.getComponent("chess").getChessName();
+                    console.log(" 找到了棋子" + name);
+                    global.event.fire("choose_chess", chess);
+                    this.chessNode = chess;
+                }
+            }
+        });
 
     },
 
@@ -55,19 +65,30 @@ cc.Class({
             for (var i = 0 ; i < 2 ; i ++){
                for (var j in result){
                    var chessConfig = result[j];
+                   let pos = chessConfig.pos;
+                   let x = pos.x;
+                   let y = pos.y;
+                   if (i === 1 ){
+                       y = 9 - pos.y;
+                   }
+                   var index = y * 9 + x;
+                   console.log("index= " + index);
+                   var node = this.controlPointList[index];
                    var chessNode = cc.instantiate(this.chess_prefab);
                    chessNode.parent = this.node;
-                   chessNode.getComponent("chess").initWithData({chess_name: chessConfig.chess_name,
-                       chess_color: defines.chessColor[i]});
-                   let pos = chessConfig.pos;
-                   let indexY =   pos.y * 9;
-                   if (i === 1 ){
-                       indexY  = (9 - pos.y ) * 9;
+                   chessNode.getComponent("chess").initWithData({
+                       chess_name: chessConfig.chess_name,
+                       chess_color: defines.chessColor[i],
+                       index_pos: {
+                           x: x,
+                           y: y
+                       }
+                   });
+
+                   this.chessNodeList.push(chessNode);
+                   chessNode.position = node.position;
 
 
-                       console.log('index y = ' + indexY);
-                   }
-                   chessNode.position = this.controlPointList[indexY + pos.x];
                }
             }
         });

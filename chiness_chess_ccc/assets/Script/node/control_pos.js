@@ -1,3 +1,4 @@
+import global from './../global'
 cc.Class({
     extends: cc.Component,
 
@@ -18,6 +19,30 @@ cc.Class({
             y: 50 / 250
         };
         this.node.opacity = 0;
-    },
 
+
+        this.node.on(cc.Node.EventType.TOUCH_START, (event)=>{
+            console.log("touch start");
+        });
+        this.node.on(cc.Node.EventType.TOUCH_END, (event)=>{
+            console.log("touch end");
+            global.event.fire("touch_pos", {
+                x: this.x,
+                y: this.y
+            })
+        });
+
+        global.event.on("choose_chess", this.chooseChess.bind(this));
+    },
+    chooseChess: function (target) {
+        this.node.opacity = 0;
+        let chessJS = target.getComponent("chess");
+        if (this.x === chessJS.x && this.y === chessJS.y){
+            this.node.opacity = 255;
+        }
+    },
+    initWithPos: function (x, y) {
+        this.x = x;
+        this.y = y;
+    }
 });

@@ -5,6 +5,16 @@
     "pos": {
       "x": 4,
       "y": 0
+    },
+    "path": {
+      "x": 1,
+      "y": 1,
+      "rect": {
+        "x": 3,
+        "y": 0,
+        "width": 3,
+        "height": 3
+      }
     }
   },
   "shi_left": {
@@ -39,6 +49,13 @@
     "chess_name": "pao",
     "pos": {
       "x": 1,
+      "y": 2
+    }
+  },
+  "pao_right":{
+    "chess_name": "pao",
+    "pos": {
+      "x": 7,
       "y": 2
     }
   },
