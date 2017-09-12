@@ -33,6 +33,9 @@ cc.Class({
         });
 
         global.event.on("choose_chess", this.chooseChess.bind(this));
+        global.event.on("move_to_next_pos", ()=>{
+            this.node.opacity = 0;
+        });
     },
     chooseChess: function (target) {
         this.node.opacity = 0;

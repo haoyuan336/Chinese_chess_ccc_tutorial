@@ -1,1 +1,266 @@
-[[{"__type__":"cc.Prefab","_name":"controller_pos","data":{"__id__":1},"asyncLoadAssets":false},{"__type__":"cc.Node","_name":"controller_pos","_components":[{"__type__":"5584c39Jk1IlrhbDrtT8ig/","node":{"__id__":1},"sprite_frame":{"__uuid__":"df1c1e34-e339-4f65-8d55-7fb932e17ddc"}}],"_prefab":{"__type__":"cc.PrefabInfo","root":{"__id__":1},"asset":{"__id__":0},"fileId":"69d3cpCx1lOA7D/3caVHbWM"}}],[{"__type__":"cc.Prefab","_name":"chess","data":{"__id__":1},"asyncLoadAssets":false},{"__type__":"cc.Node","_name":"chess","_components":[{"__type__":"18535HHApFGl6nG45zwlZJF","node":{"__id__":1}}],"_prefab":{"__type__":"cc.PrefabInfo","root":{"__id__":1},"fileId":"03a8bpi4rFHPZtDYfXZauzW"}}],[{"__type__":"cc.SceneAsset","_name":"game","scene":{"__id__":1},"asyncLoadAssets":false},{"__type__":"cc.Scene","_name":"New Node","_children":[{"__id__":2}],"_anchorPoint":{"__type__":"cc.Vec2"},"autoReleaseAssets":false},{"__type__":"cc.Node","_name":"Canvas","_parent":{"__id__":1},"_children":[{"__id__":3}],"_components":[{"__type__":"cc.Canvas","node":{"__id__":2},"_designResolution":{"__type__":"cc.Size","width":920,"height":640}}],"_id":"f75732pm0BAD5gpjD653buz","_contentSize":{"__type__":"cc.Size","width":920,"height":640},"_position":{"__type__":"cc.Vec2","x":460,"y":320}},{"__type__":"cc.Node","_name":"game_controller","_parent":{"__id__":2},"_children":[{"__id__":4},{"__id__":5},{"__id__":6}],"_components":[{"__type__":"61b35uosodC1qCtwW5+zFjf","node":{"__id__":3},"chess_prefab":{"__uuid__":"170c3467-2ac9-4dac-a3f6-ec9403a11e17"},"control_pos_prefab":{"__uuid__":"134b82e9-4941-4a54-b875-981636156f93"}}]},{"__type__":"cc.Node","_name":"chinesechess_board","_parent":{"__id__":3},"_components":[{"__type__":"cc.Sprite","node":{"__id__":4},"_spriteFrame":{"__uuid__":"ece46095-0ca7-4aee-827c-b79f01ab1af8"}}],"_contentSize":{"__type__":"cc.Size","width":459,"height":510}},{"__type__":"cc.Node","_name":"chess","_parent":{"__id__":3},"_components":[{"__type__":"18535HHApFGl6nG45zwlZJF","node":{"__id__":5}}],"_prefab":{"__type__":"cc.PrefabInfo","root":{"__id__":5},"fileId":"03a8bpi4rFHPZtDYfXZauzW"}},{"__type__":"cc.Node","_name":"controller_pos","_parent":{"__id__":3},"_components":[{"__type__":"5584c39Jk1IlrhbDrtT8ig/","node":{"__id__":6},"sprite_frame":{"__uuid__":"df1c1e34-e339-4f65-8d55-7fb932e17ddc"}}],"_prefab":{"__type__":"cc.PrefabInfo","root":{"__id__":6},"fileId":"69d3cpCx1lOA7D/3caVHbWM"}}],{"__type__":"cc.SpriteFrame","content":{"name":"chinesechess_corner","texture":"b34c106d-abfb-4479-ae9d-c7408345f0ca","rect":[1,0,348,250],"offset":[0,0],"originalSize":[350,250]}},{"__type__":"cc.SpriteFrame","content":{"name":"chinesechess_board","texture":"52dd6400-e0a5-4988-a077-2f6eab405847","rect":[0,0,459,510],"offset":[0,0],"originalSize":[459,510]}}]
+[
+  [
+    {
+      "__type__": "cc.Prefab",
+      "_name": "controller_pos",
+      "data": {
+        "__id__": 1
+      },
+      "asyncLoadAssets": false
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "controller_pos",
+      "_components": [
+        {
+          "__type__": "5584c39Jk1IlrhbDrtT8ig/",
+          "node": {
+            "__id__": 1
+          },
+          "sprite_frame": {
+            "__uuid__": "df1c1e34-e339-4f65-8d55-7fb932e17ddc"
+          }
+        }
+      ],
+      "_prefab": {
+        "__type__": "cc.PrefabInfo",
+        "root": {
+          "__id__": 1
+        },
+        "fileId": "69d3cpCx1lOA7D/3caVHbWM"
+      }
+    }
+  ],
+  [
+    {
+      "__type__": "cc.Prefab",
+      "_name": "chess",
+      "data": {
+        "__id__": 1
+      },
+      "asyncLoadAssets": false
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "chess",
+      "_components": [
+        {
+          "__type__": "18535HHApFGl6nG45zwlZJF",
+          "node": {
+            "__id__": 1
+          }
+        }
+      ],
+      "_prefab": {
+        "__type__": "cc.PrefabInfo",
+        "root": {
+          "__id__": 1
+        },
+        "fileId": "03a8bpi4rFHPZtDYfXZauzW"
+      }
+    }
+  ],
+  [
+    {
+      "__type__": "cc.SceneAsset",
+      "_name": "game",
+      "scene": {
+        "__id__": 1
+      },
+      "asyncLoadAssets": false
+    },
+    {
+      "__type__": "cc.Scene",
+      "_name": "New Node",
+      "_children": [
+        {
+          "__id__": 2
+        }
+      ],
+      "_anchorPoint": {
+        "__type__": "cc.Vec2"
+      },
+      "autoReleaseAssets": false
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "Canvas",
+      "_parent": {
+        "__id__": 1
+      },
+      "_children": [
+        {
+          "__id__": 3
+        }
+      ],
+      "_components": [
+        {
+          "__type__": "cc.Canvas",
+          "node": {
+            "__id__": 2
+          },
+          "_designResolution": {
+            "__type__": "cc.Size",
+            "width": 920,
+            "height": 640
+          }
+        }
+      ],
+      "_id": "f75732pm0BAD5gpjD653buz",
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 920,
+        "height": 640
+      },
+      "_position": {
+        "__type__": "cc.Vec2",
+        "x": 460,
+        "y": 320
+      }
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "game_controller",
+      "_parent": {
+        "__id__": 2
+      },
+      "_children": [
+        {
+          "__id__": 4
+        },
+        {
+          "__id__": 5
+        },
+        {
+          "__id__": 6
+        }
+      ],
+      "_components": [
+        {
+          "__type__": "61b35uosodC1qCtwW5+zFjf",
+          "node": {
+            "__id__": 3
+          },
+          "chess_prefab": {
+            "__uuid__": "170c3467-2ac9-4dac-a3f6-ec9403a11e17"
+          },
+          "control_pos_prefab": {
+            "__uuid__": "134b82e9-4941-4a54-b875-981636156f93"
+          }
+        }
+      ]
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "chinesechess_board",
+      "_parent": {
+        "__id__": 3
+      },
+      "_components": [
+        {
+          "__type__": "cc.Sprite",
+          "node": {
+            "__id__": 4
+          },
+          "_spriteFrame": {
+            "__uuid__": "ece46095-0ca7-4aee-827c-b79f01ab1af8"
+          }
+        }
+      ],
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 459,
+        "height": 510
+      }
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "chess",
+      "_parent": {
+        "__id__": 3
+      },
+      "_components": [
+        {
+          "__type__": "18535HHApFGl6nG45zwlZJF",
+          "node": {
+            "__id__": 5
+          }
+        }
+      ],
+      "_prefab": {
+        "__type__": "cc.PrefabInfo",
+        "root": {
+          "__id__": 5
+        },
+        "fileId": "03a8bpi4rFHPZtDYfXZauzW"
+      }
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "controller_pos",
+      "_parent": {
+        "__id__": 3
+      },
+      "_components": [
+        {
+          "__type__": "5584c39Jk1IlrhbDrtT8ig/",
+          "node": {
+            "__id__": 6
+          },
+          "sprite_frame": {
+            "__uuid__": "df1c1e34-e339-4f65-8d55-7fb932e17ddc"
+          }
+        }
+      ],
+      "_prefab": {
+        "__type__": "cc.PrefabInfo",
+        "root": {
+          "__id__": 6
+        },
+        "fileId": "69d3cpCx1lOA7D/3caVHbWM"
+      }
+    }
+  ],
+  {
+    "__type__": "cc.SpriteFrame",
+    "content": {
+      "name": "chinesechess_corner",
+      "texture": "b34c106d-abfb-4479-ae9d-c7408345f0ca",
+      "rect": [
+        1,
+        0,
+        348,
+        250
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        350,
+        250
+      ]
+    }
+  },
+  {
+    "__type__": "cc.SpriteFrame",
+    "content": {
+      "name": "chinesechess_board",
+      "texture": "52dd6400-e0a5-4988-a077-2f6eab405847",
+      "rect": [
+        0,
+        0,
+        459,
+        510
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        459,
+        510
+      ]
+    }
+  }
+]

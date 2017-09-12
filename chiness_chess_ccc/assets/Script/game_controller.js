@@ -40,21 +40,50 @@ cc.Class({
 
 
         global.event.on("touch_pos", (data)=>{
-            if (!!this.chessNode){
-                // this.chessNode
-            }
 
 
+
+            var chooseChess = undefined;
             for (let i = 0 ; i < this.chessNodeList.length ; i ++){
                 let chess =  this.chessNodeList[i];
                 let chessJS = chess.getComponent("chess");
                 if (chessJS.x === data.x && chessJS.y === data.y){
                     var name = chess.getComponent("chess").getChessName();
                     console.log(" 找到了棋子" + name);
-                    global.event.fire("choose_chess", chess);
-                    this.chessNode = chess;
+                    // global.event.fire("choose_chess", chess);
+                    chooseChess = chess;
                 }
             }
+
+
+            if (this.chessNode !== undefined && chooseChess === undefined){
+                // this.chessNode
+                let chessJs = this.chessNode.getComponent("chess");
+                chessJs.nextStep(data);
+            }else if (this.chessNode!== undefined && chooseChess === undefined){
+                let chessJs = this.chessNode.getComponent("chess");
+                let chooseChessJs = chooseChess.getComponent("chess");
+                if (chessJs.getChessColor() === chooseChessJs.getChessColor()){
+                    console.log("颜色相同的棋子");
+                }else {
+                    console.log("吃棋子");
+                    chessJs.nextStep(data, chooseChess);
+                }
+            }else if (chooseChess!== undefined){
+
+                global.event.fire("choose_chess", chooseChess);
+                this.chessNode = chooseChess;
+            }
+        });
+        global.event.on("move_to_next_pos", (chess, pos, killedChess)=>{
+            console.log("move to next pos " + JSON.stringify(pos));
+            let index = pos.y * 9 + pos.x;
+            console.log("index = " + index);
+            let position = this.controlPointList[index];
+            chess.position = position;
+            this.chessNode.getComponent("chess").setXY(pos.x, pos.y);
+            this.chessNode = undefined;
+
         });
 
     },

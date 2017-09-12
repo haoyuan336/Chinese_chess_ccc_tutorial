@@ -1,4 +1,5 @@
 import defines from './../defines'
+import global from './../global'
 cc.Class({
     extends: cc.Component,
 
@@ -29,7 +30,9 @@ cc.Class({
             console.log("chess color liet = " + JSON.stringify(chessColorList));
             var chessName = data.chess_name;
             var chessColor = data.chess_color;
+            console.log("chess color = " + chessColor);
             this.chessName = chessName;
+            this.chessColor = chessColor;
             var indexX = 0;
             for (let i = 0 ; i < chessNameList.length ; i ++){
                 if (chessName === chessNameList[i]){
@@ -60,10 +63,55 @@ cc.Class({
     },
     getChessName: function () {
         return this.chessName;
+    },
+    getChessColor: function () {
+
+        // console.log("chess color = " + this.chessColor);
+        return this.chessColor;
+    },
+    nextStep: function (data, beKillChess) {
+        console.log("next step = " + JSON.stringify(data));
+        cc.loader.loadRes("./config/chess_board_config",  (err, result)=> {
+            if (this.isCanNextStep(result[this.chessName], data)){
+                if (beKillChess){
+                    global.event.fire("move_to_next_pos",this.node, data, beKillChess);
+                }
+                global.event.fire("move_to_next_pos", this.node, data);
+            }
+            // this.isCanNextStep(result[this.chessName], data);
+        });
+    },
+    isCanNextStep: function (config, data) {
+        console.log('config = ' + JSON.stringify(config));
+        var rule = config.rule;
+        if (rule.hasOwnProperty("speed")){
+            let speedList = rule["speed"];
+            let rect = rule["limit"];
+            for (let i = 0 ; i < speedList.length ; i ++){
+                let speed = speedList[i];
+                let x = this.x + speed.x;
+                let y = this.y + speed.y;
+
+                // console.log("x y = " + x + ',' + y);
+                // console.log('rect =  ' + JSON.stringify(rect));
+
+
+                if (x === data.x && y === data.y){
+                    console.log(" 可以走这一步");
+                    if (x < rect.x || y < rect.y || x > (rect.x + rect.width) || y > (rect.y + rect.height)){
+                        console.log("超出界限了");
+                        return false;
+                    }
+                    return true;
+                }
+            }
+        }
+
+
+    },
+    setXY: function (x, y) {
+        this.x = x;
+        this.y = y;
     }
 
-    // called every frame, uncomment this function to activate update callback
-    // update: function (dt) {
-
-    // },
 });
