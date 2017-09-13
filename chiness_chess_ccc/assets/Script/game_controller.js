@@ -105,7 +105,9 @@ cc.Class({
                    var node = this.controlPointList[index];
                    var chessNode = cc.instantiate(this.chess_prefab);
                    chessNode.parent = this.node;
+                   console.log("chess config = " + JSON.stringify(chessConfig));
                    chessNode.getComponent("chess").initWithData({
+                       image_name: chessConfig.image_name,
                        chess_name: chessConfig.chess_name,
                        chess_color: defines.chessColor[i],
                        index_pos: {

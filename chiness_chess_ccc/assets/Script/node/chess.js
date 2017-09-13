@@ -25,20 +25,18 @@ cc.Class({
         console.log('data = ' + JSON.stringify(data));
         cc.loader.loadRes("./chinesechess_corner", cc.SpriteFrame, (err, spriteFrame)=>{
             // console.log("error = " + err);
-            const chessNameList = defines.chessList;
             const chessColorList = defines.chessColor;
             console.log("chess color liet = " + JSON.stringify(chessColorList));
             var chessName = data.chess_name;
             var chessColor = data.chess_color;
             console.log("chess color = " + chessColor);
+            var imageName = data.image_name;
             this.chessName = chessName;
             this.chessColor = chessColor;
-            var indexX = 0;
-            for (let i = 0 ; i < chessNameList.length ; i ++){
-                if (chessName === chessNameList[i]){
-                    indexX = i;
-                }
-            }
+            var indexX = defines.chessMap[imageName];
+            console.log("chess map = " + JSON.stringify(defines.chessMap));
+            console.log("image name = " + imageName);
+            console.log("index x = " + indexX);
             var indexY = 0;
             for (let j = 0 ; j < chessColorList.length ; j ++){
                 if (chessColor === chessColorList[j]){
