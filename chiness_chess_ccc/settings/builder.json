@@ -22,5 +22,7 @@
   "renderMode": "0",
   "startScene": "c22d3130-c427-4d8e-bfe6-72252015c9d3",
   "title": "chiness_chess_ccc",
-  "webOrientation": "auto"
+  "webOrientation": "auto",
+  "includeSDKBox": false,
+  "md5Cache": false
 }
