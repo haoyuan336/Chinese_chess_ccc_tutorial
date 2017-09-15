@@ -74,6 +74,9 @@ cc.Class({
         if (this.checkSpeedDis(config, data)){
             return true;
         }
+        if (this.checkRequire(config, data)){
+            return true;
+        }
 
     },
     checkSpeed: function (config, data) {
@@ -105,6 +108,32 @@ cc.Class({
                         let disY = speedDis.y[h];
                         let x = this.x + disX;
                         let y = this.y + disY;
+                        if (x === data.x && y === data.y){
+                            console.log("可以走这一步");
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+    },
+    checkRequire: function (config, data) {
+        if (config.hasOwnProperty("speedLimit")){
+            var speedLimitList = config["speedLimit"];
+            for (let i = 0 ; i < speedLimitList.length ; i ++){
+                let speedLimit = speedLimitList[i];
+                let require = speedLimit['require'];
+                console.log("check require = " + JSON.stringify(require));
+                if (this.x > require.x && this.y > require.y && this.x < (require.x + require.width) && this.y < (require.y + require.height) ){
+                    let speedList = speedLimit['speed'];
+                    console.log("require = " + JSON.stringify(speedList));
+                    console.log("speedList = " + JSON.stringify(speedList));
+
+
+                    for (let j = 0 ; j < speedList.length ; j ++){
+                        let speed = speedList[j];
+                        let x = this.x + speed.x;
+                        let y = this.y + speed.y;
                         if (x === data.x && y === data.y){
                             console.log("可以走这一步");
                             return true;
