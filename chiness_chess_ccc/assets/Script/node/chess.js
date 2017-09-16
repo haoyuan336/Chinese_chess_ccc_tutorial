@@ -118,17 +118,25 @@ cc.Class({
         }
     },
     checkRequire: function (config, data) {
+        //有限制的走法 兵
         if (config.hasOwnProperty("speedLimit")){
             var speedLimitList = config["speedLimit"];
             for (let i = 0 ; i < speedLimitList.length ; i ++){
                 let speedLimit = speedLimitList[i];
                 let require = speedLimit['require'];
                 console.log("check require = " + JSON.stringify(require));
-                if (this.x > require.x && this.y > require.y && this.x < (require.x + require.width) && this.y < (require.y + require.height) ){
-                    let speedList = speedLimit['speed'];
-                    console.log("require = " + JSON.stringify(speedList));
-                    console.log("speedList = " + JSON.stringify(speedList));
+                if (this.chessColor === defines.chessColor[1]){
+                    console.log("黑子");
+                    require.y = 9 -require.height;
+                    require.height = 9 - require.y;
 
+                }
+                console.log("require = " + JSON.stringify(require));
+                if (this.x >= require.x && this.y >= require.y && this.x <= (require.x + require.width) && this.y <= (require.y + require.height) ){
+                    let speedList = speedLimit['speed'];
+                    console.log("speed list = " + JSON.stringify(speedList));
+                    // console.log("require = " + JSON.stringify(speedList));
+                    // console.log("speedList = " + JSON.stringify(speedList));
 
                     for (let j = 0 ; j < speedList.length ; j ++){
                         let speed = speedList[j];
