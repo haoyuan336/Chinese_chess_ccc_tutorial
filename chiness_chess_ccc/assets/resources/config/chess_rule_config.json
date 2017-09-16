@@ -18,17 +18,28 @@
         "y": -0
       }],
     "limit": {
-      "x": 3,
-      "y": 0,
-      "width": 2,
-      "height": 2
+
+      "red": {
+        "xmin": 3,
+        "xmax": 5,
+        "ymin": 0,
+        "ymax": 2
+      },
+      "black": {
+        "xmin": 3,
+        "xmax": 5,
+        "ymin": 7,
+        "ymax": 9
+      }
+
     }
   },
   "shi": {
-    "speed": [{
+    "speed": [
+      {
       "x": -1,
       "y": -1
-    },
+      },
       {
         "x": 1,
         "y": 1
@@ -43,10 +54,18 @@
       }
     ],
     "limit": {
-      "x": 3,
-      "y": 0,
-      "width": 2,
-      "height": 2
+      "red": {
+        "xmin": 3,
+        "xmax": 5,
+        "ymin": 0,
+        "ymax": 2
+      },
+      "black": {
+        "xmin": 3,
+        "xmax": 5,
+        "ymin": 7,
+        "ymax": 9
+      }
     }
   },
 
@@ -70,11 +89,20 @@
       }
     ],
     "limit": {
-      "x": 0,
-      "y": 0,
-      "width": "8",
-      "height": "4"
-    }
+      "red": {
+        "xmin": 0,
+        "xmax": 8,
+        "ymin": 0,
+        "ymax": 4
+      },
+      "black": {
+        "xmin": 0,
+        "xmax": 8,
+        "ymin": 5,
+        "ymax": 9
+      }
+    },
+    "speciallimit": "middle"
   },
   "ma": {
     "speed": [
@@ -126,25 +154,75 @@
   },
   "bing": {
     "speedLimit": {
-      "red": {
-        "require": {
-          "y": 0,
-          "height": 5
+      "red": [
+        {
+          "require": {
+            "ymin": 0,
+            "ymax": 5
+          },
+          "speedlist": [
+            {
+              "x": 0,
+              "y": 1
+            }
+          ]
         },
-        "speedlist": [
-          {
-            "x": 0,
-            "y": 1
-          }
-        ]
-      },
-      "black": {
-        "y": 5,
-        "height": 9,
-        "speedlist": [
+        {
+          "require": {
+            "ymin": 5,
+            "ymax": 9
+          },
+          "speedlist": [
+            {
+              "x": 0,
+              "y": 1
+            },
+            {
+              "x": 1,
+              "y": 0
+            },
+            {
+              "x": -1,
+              "y": 0
+            }
+          ]
 
-        ]
-      }
+        }
+      ],
+      "black": [
+        {
+          "require": {
+            "ymin": 5,
+            "ymax": 9
+          },
+          "speedlist": [
+            {
+              "x": 0,
+              "y": -1
+            }
+          ]
+        },
+        {
+          "require": {
+            "ymin": 0,
+            "ymax": 4
+          },
+          "speedlist": [
+            {
+              "x": 0,
+              "y": -1
+            } ,
+            {
+              "x": -1,
+              "y": 0
+            },
+            {
+              "x": 1,
+              "y": 0
+            }
+          ]
+        }
+      ]
     }
   },
   "pao": {

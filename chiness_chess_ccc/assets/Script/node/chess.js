@@ -52,20 +52,25 @@ cc.Class({
         // console.log("chess color = " + this.chessColor);
         return this.chessColor;
     },
-    nextStep: function (data, beKillChess) {
-        console.log("next step = " + JSON.stringify(data));
+    nextStep: function (data, chessNodeList, cb) {
         cc.loader.loadRes("./config/chess_rule_config",  (err, result)=> {
-            console.log('result = ' + JSON.stringify(result));
-            console.log("chess type = " + this.chessType);
             if (this.isCanNextStep(result[this.chessType], data)){
-                if (beKillChess){
-                    global.event.fire("move_to_next_pos",this.node, data, beKillChess);
+                // if (cb){
+                //     cb(true);
+                // }
+                if (this.checkSpeicalLimit(data, chessNodeList)){
+
                 }
-                global.event.fire("move_to_next_pos", this.node, data);
             }
-            // this.isCanNextStep(result[this.chessName], data);
         });
     },
+
+    isCanKill: function (data, chessNodeList, cb) {
+
+    },
+
+
+
     isCanNextStep: function (config, data) {
         console.log('config = ' + JSON.stringify(config));
         if (this.checkSpeed(config, data)){
@@ -77,7 +82,6 @@ cc.Class({
         if (this.checkRequire(config, data)){
             return true;
         }
-
     },
     checkSpeed: function (config, data) {
         if (config.hasOwnProperty("speed")){
@@ -87,10 +91,21 @@ cc.Class({
                 let x = this.x + speed.x;
                 let y = this.y + speed.y;
                 if (x === data.x && y === data.y){
-                    // if (this.checkRect(config)){
-                    //     console.log("超出边界了");
-                    //     return false;
-                    // }
+                    if (config.hasOwnProperty("limit")){
+                        let limitMap = config["limit"];
+                        let limit = limitMap[this.chessColor];
+
+                        console.log("limit = " + JSON.stringify(limit));
+                        console.log("x = " + x);
+                        console.log("y = " + y);
+                        if (x >= limit.xmin && x <= limit.xmax && y >= limit.ymin && y <= limit.ymax){
+
+                        }else {
+                            console.log("超出了界限");
+                            return false;
+                        }
+
+                    }
                     console.log(" 可以走这一步");
                     return true;
                 }
@@ -110,6 +125,7 @@ cc.Class({
                         let y = this.y + disY;
                         if (x === data.x && y === data.y){
                             console.log("可以走这一步");
+
                             return true;
                         }
                     }
@@ -120,46 +136,41 @@ cc.Class({
     checkRequire: function (config, data) {
         //有限制的走法 兵
         if (config.hasOwnProperty("speedLimit")){
-            var speedLimitList = config["speedLimit"];
-            for (let i = 0 ; i < speedLimitList.length ; i ++){
+            var speedLimitConfig = config["speedLimit"];
+            let speedLimitList = speedLimitConfig[this.chessColor];
+            for (let i = 0 ; i < speedLimitList.length; i ++){
                 let speedLimit = speedLimitList[i];
-                let require = speedLimit['require'];
-                console.log("check require = " + JSON.stringify(require));
-                if (this.chessColor === defines.chessColor[1]){
-                    console.log("黑子");
-                    require.y = 9 -require.height;
-                    require.height = 9 - require.y;
+                let require = speedLimit.require;
 
-                }
+
+
                 console.log("require = " + JSON.stringify(require));
-                if (this.x >= require.x && this.y >= require.y && this.x <= (require.x + require.width) && this.y <= (require.y + require.height) ){
-                    let speedList = speedLimit['speed'];
-                    console.log("speed list = " + JSON.stringify(speedList));
-                    // console.log("require = " + JSON.stringify(speedList));
-                    // console.log("speedList = " + JSON.stringify(speedList));
 
+                if (this.y >= require.ymin && this.y <= require.ymax){
+                    let speedList = speedLimit.speedlist;
                     for (let j = 0 ; j < speedList.length ; j ++){
                         let speed = speedList[j];
+                        console.log("this.x = " + this.x);
+                        console.log("this.y = " + this.y);
                         let x = this.x + speed.x;
                         let y = this.y + speed.y;
+                        console.log("speed = " + JSON.stringify(speed));
+                        console.log("x = " + x);
+                        console.log("y = " + y);
+                        console.log("data = " + JSON.stringify(data));
                         if (x === data.x && y === data.y){
                             console.log("可以走这一步");
                             return true;
                         }
                     }
+
                 }
+
             }
+
         }
     },
-    checkRect: function (config, data) {
-        if (config.hasOwnProperty("limit")){
-            let rect = config["limit"];
-            if (x < rect.x || y < rect.y || x > (rect.x + rect.width) || y > (rect.y + rect.height)){
-                console.log("超出界限了");
-                return true;
-            }
-        }
-        return false;
+    checkSpeicalLimit: function () {
 
     },
     setXY: function (x, y) {

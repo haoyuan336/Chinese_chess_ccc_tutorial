@@ -59,33 +59,47 @@ cc.Class({
             if (this.chessNode !== undefined && chooseChess === undefined){
                 // this.chessNode
                 let chessJs = this.chessNode.getComponent("chess");
-                chessJs.nextStep(data);
-            }else if (this.chessNode!== undefined && chooseChess === undefined){
-                let chessJs = this.chessNode.getComponent("chess");
-                let chooseChessJs = chooseChess.getComponent("chess");
-                if (chessJs.getChessColor() === chooseChessJs.getChessColor()){
-                    console.log("颜色相同的棋子");
-                }else {
-                    console.log("吃棋子");
-                    chessJs.nextStep(data, chooseChess);
-                }
-            }else if (chooseChess!== undefined){
+                chessJs.nextStep(data, this.chessNodeList, (value)=>{
+                    console.log("value = " + value);
+                    if (value === true){
+                        let index = data.y * 9 + data.x;
+                        let position = this.controlPointList[index];
+                        this.chessNode.position = position;
+                        chessJs.setXY(data.x, data.y);
+                        this.chessNode = undefined;
+                        global.event.fire("move_over", data);
+                    }
 
-                global.event.fire("choose_chess", chooseChess);
-                this.chessNode = chooseChess;
+                });
+
+
             }
-        });
-        global.event.on("move_to_next_pos", (chess, pos, killedChess)=>{
-            console.log("move to next pos " + JSON.stringify(pos));
-            let index = pos.y * 9 + pos.x;
-            console.log("index = " + index);
-            let position = this.controlPointList[index];
-            chess.position = position;
-            this.chessNode.getComponent("chess").setXY(pos.x, pos.y);
-            this.chessNode = undefined;
+            if (this.chessNode === undefined && chooseChess !== undefined){
+                this.chessNode = chooseChess;
+                global.event.fire("choose_chess", chooseChess);
+            }
+            if (this.chessNode !== undefined && chooseChess !== undefined){
+                let chessColor1 = this.chessNode.getComponent("chess").getChessColor();
+                let chessColor2 = chooseChess.getComponent("chess").getChessColor();
+                if (chessColor1 === chessColor2){
+                    this.chessNode = chooseChess;
+                    global.event.fire("choose_chess", chooseChess);
+                }else {
+                    this.chessNode.getComponent("chess").isCanKill(data, this.chessNodeList, (value)=>{
+                        if (value){
+                            let index = data.y * 9 + data.x;
+                            let position = this.controlPointList[index];
+                            this.chessNode.position = position;
+                            this.chessNode.getComponent("chess").setXY(data.x, data.y);
+                            this.chessNode = undefined;
+                            global.event.fire("move_over", data);
+                        }
+
+                    });
+                }
+            }
 
         });
-
     },
 
     initChess: function () {

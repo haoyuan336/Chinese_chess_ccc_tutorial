@@ -33,7 +33,7 @@ cc.Class({
         });
 
         global.event.on("choose_chess", this.chooseChess.bind(this));
-        global.event.on("move_to_next_pos", ()=>{
+        global.event.on("move_over", ()=>{
             this.node.opacity = 0;
         });
     },
